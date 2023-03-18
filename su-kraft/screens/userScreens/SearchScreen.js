@@ -208,6 +208,7 @@ const SearchScreen = (props) => {
                         <FlashList
                             data={producers}
                             numColumns={2}
+                            estimatedItemSize={100}
                             renderItem={({item, index}) => {
                                 console.log(item)
                                 return(

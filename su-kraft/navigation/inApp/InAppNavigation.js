@@ -5,6 +5,8 @@ import ProfileStack from "./ProfileStack";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import SearchStack from "./SearchStack";
+import CameraScreen from "../../screens/userScreens/CameraScreen";
+import CameraStack from "./CameraStack";
 
 const Tab = createBottomTabNavigator();
 
@@ -56,6 +58,16 @@ const InAppNavigation = (props) => {
                         tabBarLabel: 'Home',
                         tabBarIcon: ({color}) => (
                             <MaterialCommunityIcons name="home" color={color} size={26}/>
+                        ),
+                    }}
+                />
+                <Tab.Screen
+                    name='Camera'
+                    component={CameraStack}
+                    options={{
+                        tabBarLabel: 'Search',
+                        tabBarIcon: ({color}) => (
+                            <MaterialCommunityIcons name="camera" color={color} size={26}/>
                         ),
                     }}
                 />
