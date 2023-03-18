@@ -1,0 +1,45 @@
+{
+  "expo": {
+    "name": "SuKraft",
+    "slug": "su-kraft-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/IconFull.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/AndroidIcon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "userInterfaceStyle": "automatic"
+    },
+    "android": {
+      "package": "com.mnm.organizujApp",
+      "versionCode": 1,
+      "userInterfaceStyle": "automatic",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/AndroidIcon.png",
+        "backgroundColor": "#E7E9E9"
+      }
+    },
+    "web": {
+      "favicon": "./assets/AndroidIcon.png"
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app accesses your photos to let you share them with your friends."
+        }
+      ]
+    ]
+  }
+}
