@@ -3,7 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="2ddb8fa5-f77c-47d3-bbac-197988d22336" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/SinglePost.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/SinglePost.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enviroments/enviroment.js" beforeDir="false" afterPath="$PROJECT_DIR$/enviroments/enviroment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fetch/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/fetch/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fetch/categories.js" beforeDir="false" afterPath="$PROJECT_DIR$/fetch/categories.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fetch/image.js" beforeDir="false" afterPath="$PROJECT_DIR$/fetch/image.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/navigation/inApp/InAppNavigation.js" beforeDir="false" afterPath="$PROJECT_DIR$/navigation/inApp/InAppNavigation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/preLoginScreens/ForgotPasswordScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/preLoginScreens/ForgotPasswordScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/userScreens/HomeScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/userScreens/HomeScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +43,7 @@
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "C:/Users/neman/Desktop/BizKod 7/SuKraftApp/su-kraft",
     "nodejs_package_manager_path": "yarn",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\PhpStorm 2022.2.3\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -44,7 +56,8 @@
       <option name="presentableId" value="Default" />
       <updated>1679137028393</updated>
       <workItem from="1679137030926" duration="308000" />
-      <workItem from="1679137462804" duration="16281000" />
+      <workItem from="1679137462804" duration="16445000" />
+      <workItem from="1679156920509" duration="12925000" />
     </task>
     <servers />
   </component>

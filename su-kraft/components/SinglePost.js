@@ -1,4 +1,4 @@
-import {Video} from "expo-av";
+import {Video, Audio} from "expo-av";
 import {forwardRef, useEffect, useImperativeHandle, useRef} from "react";
 import {Dimensions, TouchableWithoutFeedback, View} from "react-native";
 import AvatarImage from "react-native-paper/src/components/Avatar/AvatarImage";
@@ -13,12 +13,23 @@ const SinglePost = forwardRef((props, parentRef) => {
     }))
 
     useEffect(() => {
+        load();
         return () => {
             unload();
         };
     }, []);
 
     const play = async () => {
+        await Audio.setAudioModeAsync({
+            allowsRecordingIOS: true,
+            playsInSilentModeIOS: true,
+            interruptionModeIOS: 1,
+            staysActiveInBackground: true,
+            interruptionModeAndroid: 1,
+            shouldDuckAndroid: true,
+            playThroughEarpieceAndroid: true,
+        });
+
         if (ref.current == null) {
             return;
         }
@@ -53,12 +64,22 @@ const SinglePost = forwardRef((props, parentRef) => {
     }
 
     const unload = async () => {
-        console.log("unload")
         if (ref.current == null) {
             return;
         }
         try {
             await ref.current.unloadAsync();
+        } catch (e) {
+            console.error(e)
+        }
+    }
+
+    const load = async () => {
+        if (ref.current == null) {
+            return;
+        }
+        try {
+            await ref.current.loadAsync({uri: 'https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'});
         } catch (e) {
             console.error(e)
         }
@@ -70,21 +91,19 @@ const SinglePost = forwardRef((props, parentRef) => {
                 const status = await ref.current.getStatusAsync();
 
                 if (status?.isPlaying) {
-                    console.log("STOP")
                     stop();
                 } else {
-                    console.log("PLAY")
                     play();
                 }
             }}
             style={{position: 'relative'}}
         >
-            <>
+            <View>
                 <Video
                     ref={ref}
-                    videoStyle={{height: Dimensions.get("window").height - 80}}
-                    style={{height: Dimensions.get("window").height - 80}}
-                    posterStyle={{height: Dimensions.get("window").height - 80}}
+                    videoStyle={{height: Dimensions.get("window").height - 51}}
+                    style={{height: Dimensions.get("window").height - 51}}
+                    posterStyle={{height: Dimensions.get("window").height - 51}}
                     resizeMode="cover"
                     isLooping={true}
                     source={{
@@ -116,7 +135,7 @@ const SinglePost = forwardRef((props, parentRef) => {
                         <Text numberOfLines={4} style={{color: '#fff'}} variant='bodyLarge'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium consectetur eligendi facilis id iure labore numquam saepe temporibus! Accusantium aliquam aliquid animi beatae debitis dignissimos doloribus ducimus ea eaque earum eveniet excepturi id iste iusto modi neque nihil nobis non nulla numquam odio perferendis perspiciatis porro, quaerat quam qui quia, sed similique sit soluta tempora tempore temporibus ut veritatis, vitae voluptate voluptatem? Consequuntur laudantium mollitia quia quo sed sint sit.</Text>
                     </View>
                 </View>
-            </>
+            </View>
         </TouchableWithoutFeedback>
     )
 })

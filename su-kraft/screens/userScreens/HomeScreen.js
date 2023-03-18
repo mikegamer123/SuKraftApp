@@ -23,10 +23,8 @@ const HomeScreen = (props) => {
             const cell = mediaRefs.current[element.key]
             if (cell){
                 if (element.isViewable){
-                    console.log("IN SCREEN PLAY", element.item)
                     cell.play();
                 } else {
-                    console.log("IN SCREEN STOP", element.item)
                     cell.stop();
                 }
             }
@@ -35,7 +33,7 @@ const HomeScreen = (props) => {
 
     const renderItem = ({item, index}) => {
         return (
-            <View style={{backgroundColor: "#000", height: Dimensions.get("window").height - 80}}>
+            <View style={{backgroundColor: "#000", height: Dimensions.get("window").height - 51}}>
                 <SinglePost
                     ref={(PostSingleRef) => (mediaRefs.current[item] = PostSingleRef)}
                     url="https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4"
@@ -58,7 +56,7 @@ const HomeScreen = (props) => {
                 }}
                 keyExtractor={item => item}
                 renderItem={renderItem}
-                estimatedItemSize={Dimensions.get("window").height - 80}
+                estimatedItemSize={Dimensions.get("window").height - 51}
                 showsHorizontalScrollIndicator={false}
                 onViewableItemsChanged={onViewableItemsChanged.current}
             />

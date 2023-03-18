@@ -31,7 +31,6 @@ export const createAttendantImage = async (pic, attendantId) => {
         type: 'image/png', //file type
     }
     formData.append("image_upload", imageData);
-    console.log(formData, imageData, pic)
     return fetch(`${apiUrl}/image/attendant/${attendantId}`, {
             method: "POST",
             mode: "cors",

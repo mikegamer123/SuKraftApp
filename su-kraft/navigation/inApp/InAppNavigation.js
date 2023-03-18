@@ -2,10 +2,11 @@ import {NavigationContainer} from "@react-navigation/native";
 import CustomNavigationDrawer from "../../components/CustomNavigationDrawer";
 import HomeStack from "./HomeStack";
 import ProfileStack from "./ProfileStack";
-import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
+import SearchStack from "./SearchStack";
 
-const Tab = createMaterialBottomTabNavigator();
+const Tab = createBottomTabNavigator();
 
 const InAppNavigation = (props) => {
     const linking = {
@@ -41,10 +42,12 @@ const InAppNavigation = (props) => {
                 screenOptions={{
                     headerShown: false,
                     labelShown: false,
+                    showLabel: false,
+                    "tabBarShowLabel": false,
                 }}
                 labeled={false}
                 drawerContent={(props) => <CustomNavigationDrawer {...props} />}
-                initialRouteName='Home'
+                initialRouteName='Search'
             >
                 <Tab.Screen
                     name='Home'
@@ -56,16 +59,16 @@ const InAppNavigation = (props) => {
                         ),
                     }}
                 />
-                {/*<Tab.Screen*/}
-                {/*    name='Home'*/}
-                {/*    component={HomeStack}*/}
-                {/*    options={{*/}
-                {/*        tabBarLabel: 'Home',*/}
-                {/*        tabBarIcon: ({color}) => (*/}
-                {/*            <MaterialCommunityIcons name="magnify" color={color} size={26}/>*/}
-                {/*        ),*/}
-                {/*    }}*/}
-                {/*/>*/}
+                <Tab.Screen
+                    name='Search'
+                    component={SearchStack}
+                    options={{
+                        tabBarLabel: 'Search',
+                        tabBarIcon: ({color}) => (
+                            <MaterialCommunityIcons name="magnify" color={color} size={26}/>
+                        ),
+                    }}
+                />
                 <Tab.Screen
                     name='Profile'
                     component={ProfileStack}

@@ -59,6 +59,7 @@ import {createContext, useEffect, useMemo, useReducer, useState} from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {getUserById} from "./fetch/users";
 import {UserContext} from "./contexts/UserContext";
+import { NativeBaseProvider } from "native-base";
 
 export const AuthContext = createContext(null);
 
@@ -160,11 +161,13 @@ export default function App() {
       <AuthContext.Provider value={authContext}>
           <UserContext.Provider value={{user: user, setUser: setUser}}>
               <PaperProvider theme={theme}>
+                  <NativeBaseProvider>
                   <View style={{flex: 1, backgroundColor: theme.colors.backgroundColor}}>
                       {
                           renderApp
                       }
                   </View>
+                  </NativeBaseProvider>
               </PaperProvider>
           </UserContext.Provider>
       </AuthContext.Provider>

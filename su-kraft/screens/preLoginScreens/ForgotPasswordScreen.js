@@ -22,7 +22,6 @@ const ForgotPasswordScreen = () => {
         try {
             await resetPassword(data.email).then(async r => {
                 const res = await r.json();
-                console.log("AAA", res);
             })
         } catch (e) {
             console.log(e);
