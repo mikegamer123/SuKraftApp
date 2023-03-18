@@ -4,7 +4,7 @@ import {Camera} from "expo-camera";
 import {Audio} from "expo-av";
 import * as ImagePicker from "expo-image-picker";
 import * as MediaLibrary from "expo-media-library";
-import {useIsFocused} from "@react-navigation/native";
+import {useIsFocused, useNavigation} from "@react-navigation/native";
 import {IconButton} from "react-native-paper";
 
 const CameraScreen = (props) => {
@@ -17,6 +17,7 @@ const CameraScreen = (props) => {
     const [cameraFlash, setCameraFlash] = useState(Camera.Constants.FlashMode.off);
     const [isCameraReady, setIsCameraReady] = useState(false);
     const isFocused = useIsFocused();
+    const navigation = useNavigation();
 
     const loadPage = async () => {
         const cameraStatus = await Camera.requestCameraPermissionsAsync();
@@ -40,11 +41,14 @@ const CameraScreen = (props) => {
             try {
                 const options = {maxDuration: 60, quality: Camera.Constants.VideoQuality['480']}
 
+                console.log("Start")
+
                 const videoRecordPromise = cameraRef.recordAsync(options);
 
                 if (videoRecordPromise){
                     const data = await videoRecordPromise;
                     const source = data.uri;
+                    navigation.navigate("SavePostScreen", {source: source});
                 }
             } catch (e) {
                 console.error(e)
@@ -53,6 +57,9 @@ const CameraScreen = (props) => {
     }
 
     const stopVideo = async () => {
+
+        console.log("End");
+
         if (cameraRef){
             cameraRef.stopRecording();
         }
@@ -67,15 +74,13 @@ const CameraScreen = (props) => {
         })
 
         if (!result.cancelled){
-
+            navigation.navigate("SavePostScreen", {source: result.assets[0].uri});
         }
     }
 
     if (!hasCameraPermissions || !hasAudioPermissions || !hasAudioPermissions) {
         return <View></View>
     }
-
-    console.log(cameraFlash)
 
     if (!isFocused) {
         return <View></View>
@@ -131,7 +136,7 @@ const CameraScreen = (props) => {
                             alignSelf: 'center'
                         }}
                         disabled={!isCameraReady}
-                        onPress={() => {recordVideo()}}
+                        onPressIn={() => {recordVideo()}}
                         onPressOut={() => {stopVideo()}}
                     />
                 </View>
