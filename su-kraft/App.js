@@ -106,7 +106,6 @@ export default function App() {
                 const userToken = await AsyncStorage.getItem("token");
                 const userId = await AsyncStorage.getItem("userId");
                 const sellerId = await AsyncStorage.getItem("sellerId");
-                console.log("SELLER ID", sellerId)
                 if (sellerId) {
                     await getSellerById(sellerId).then(async r2 => {
                         const res2 = await r2.json();
@@ -130,7 +129,6 @@ export default function App() {
             refreshUser: async () => {
                 const userId = await AsyncStorage.getItem("userId");
                 const sellerId = await AsyncStorage.getItem("sellerId");
-                console.log("SELLER ID", sellerId)
                 if (sellerId) {
                     await getSellerById(sellerId).then(async r2 => {
                         const res2 = await r2.json();
@@ -182,7 +180,6 @@ export default function App() {
             }
             if (userId) {
                 const sellerId = await AsyncStorage.getItem("sellerId");
-                console.log("SELLER ID", sellerId)
                 if (sellerId) {
                     await getSellerById(sellerId).then(async r2 => {
                         const res2 = await r2.json();

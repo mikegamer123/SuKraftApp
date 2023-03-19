@@ -15,7 +15,6 @@ const SellerScreen = (props) => {
     const loadProducts = async () => {
         await getProductsBySellerId(seller?.seller?.id).then(async r => {
             const res = await r.json();
-            console.log("REX", res)
             setProducts(res);
         })
     }

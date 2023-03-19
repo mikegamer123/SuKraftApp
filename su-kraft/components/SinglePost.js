@@ -25,8 +25,6 @@ const SinglePost = forwardRef((props, parentRef) => {
     }, []);
 
     const play = async () => {
-        console.log("Play")
-
         if (ref.current == null) {
             return;
         }
@@ -112,7 +110,6 @@ const SinglePost = forwardRef((props, parentRef) => {
                                     onPress={async () => {
                                         await getSellerById(props?.userId).then(async r => {
                                             const res = await r.json();
-                                            console.log(res)
                                             navigation.navigate("SellerScreen", {seller: {...res, pfp: serverUrl + "/" + res?.imageSeller?.srcUrl}})
                                         })
                                     }}
@@ -167,7 +164,6 @@ const SinglePost = forwardRef((props, parentRef) => {
                                 onPress={async () => {
                                     await getSellerById(props?.userId).then(async r => {
                                         const res = await r.json();
-                                        console.log(res)
                                         navigation.navigate("SellerScreen", {seller: {...res, pfp: serverUrl + "/" + res?.imageSeller?.srcUrl}})
                                     })
                                 }}

@@ -18,7 +18,6 @@ const SavePostScreen = (props) => {
     const navigation = useNavigation();
 
     const createPostHandler = async () => {
-        console.log("START");
         setLoading(true);
         try {
             const sellerId = await AsyncStorage.getItem("sellerId");

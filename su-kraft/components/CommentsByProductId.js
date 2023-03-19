@@ -19,7 +19,6 @@ const CommentsByProductId = (props) => {
         await getReviewsByProductId(productId).then(async r => {
             const res = await r.json();
             setComments(res);
-            console.log(res);
         })
     }
 
