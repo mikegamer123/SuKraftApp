@@ -52,6 +52,8 @@ const InAppNavigation = (props) => {
         })
     }
 
+    console.log(inCartAmount)
+
     return (
         <NavigationContainer linking={linking}>
             <Tab.Navigator
@@ -114,7 +116,7 @@ const InAppNavigation = (props) => {
                             <View style={{position: 'relative'}}>
                                 <MaterialCommunityIcons name="cart" color={color} size={26}/>
                                 {
-                                    inCartAmount &&
+                                    inCartAmount > 0 &&
                                     <Badge style={{position: 'absolute', right: -8, top: -8}}>{inCartAmount}</Badge>
                                 }
                             </View>

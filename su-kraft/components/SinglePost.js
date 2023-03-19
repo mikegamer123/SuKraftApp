@@ -6,7 +6,6 @@ import {IconButton, Text} from "react-native-paper";
 
 const SinglePost = forwardRef((props, parentRef) => {
     const ref = useRef(null);
-    console.log(props.url)
     useImperativeHandle(parentRef, () => ({
         play,
         stop,
@@ -21,15 +20,7 @@ const SinglePost = forwardRef((props, parentRef) => {
     }, []);
 
     const play = async () => {
-        await Audio.setAudioModeAsync({
-            allowsRecordingIOS: true,
-            playsInSilentModeIOS: true,
-            interruptionModeIOS: 1,
-            staysActiveInBackground: true,
-            interruptionModeAndroid: 1,
-            shouldDuckAndroid: true,
-            playThroughEarpieceAndroid: true,
-        });
+        console.log("Play")
 
         if (ref.current == null) {
             return;
@@ -80,7 +71,7 @@ const SinglePost = forwardRef((props, parentRef) => {
             return;
         }
         try {
-            await ref.current.loadAsync({uri: props.url});
+            // await ref.current.loadAsync({uri: props.url});
         } catch (e) {
             console.error(e)
         }

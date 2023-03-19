@@ -177,9 +177,6 @@ export default function App() {
                 const oldCart = JSON.parse(cartString);
                 setCart(oldCart);
             }
-            await AsyncStorage.removeItem("cart");
-            setCart([]);
-            console.log("yo");
             if (userToken) {
                 dispatch({type: "SIGN_IN", token: userToken});
             }

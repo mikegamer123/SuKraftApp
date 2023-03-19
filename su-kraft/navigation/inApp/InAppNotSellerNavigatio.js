@@ -104,8 +104,8 @@ const InAppNotSellerNavigation = (props) => {
                             <View style={{position: 'relative'}}>
                                 <MaterialCommunityIcons name="cart" color={color} size={26}/>
                                 {
-                                    inCartAmount &&
-                                        <Badge style={{position: 'absolute', right: -8, top: -8}}>{inCartAmount}</Badge>
+                                    inCartAmount > 0 &&
+                                    <Badge style={{position: 'absolute', right: -8, top: -8}}>{inCartAmount}</Badge>
                                 }
                             </View>
                         ),

@@ -5,7 +5,7 @@ import {environment} from "../../enviroments/enviroment";
 import {AuthContext} from "../../App";
 import {UserContext} from "../../contexts/UserContext";
 import {FlashList} from "@shopify/flash-list";
-import {Dimensions, View} from "react-native";
+import {Dimensions, FlatList, View} from "react-native";
 import SinglePost from "../../components/SinglePost";
 import {getAllPosts} from "../../fetch/posts";
 
@@ -52,7 +52,7 @@ const HomeScreen = (props) => {
                     ref={(PostSingleRef) => (mediaRefs.current[item] = PostSingleRef)}
                     url={serverUrl + "/" + item?.imagePost?.srcUrl}
                     username={item?.user?.username}
-                    desc={item?.post?.description}
+                    description={item?.post?.description}
                     image={item?.imagePost?.type === 'image'}
                 />
             </View>
@@ -61,7 +61,7 @@ const HomeScreen = (props) => {
 
     return (
         <ScreenBackground style={{paddingHorizontal: 0}}>
-            <FlashList
+            <FlatList
                 data={videos}
                 pagingEnabled
                 windowSize={4}
