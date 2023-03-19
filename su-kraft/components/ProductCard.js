@@ -14,6 +14,8 @@ const ProductCard = ({data}) => {
     const [image, setImage] = useState();
     const navigation = useNavigation();
 
+    console.log("IN ITEM", data)
+
     const loadImage = async () => {
         try {
             await getMedia(data?.mediaID).then(async r => {
@@ -40,7 +42,7 @@ const ProductCard = ({data}) => {
     const navigateHandler = async () => {
         await getSellerById(data?.sellerID).then(async r => {
             const res = await r.json();
-            navigation.navigate("SingleProductScreen", {product: {...data, image: image, seller: res}})
+            navigation.navigate("SingleProductScreen", {product: {...data, image: image, seller: res}});
         })
     }
 

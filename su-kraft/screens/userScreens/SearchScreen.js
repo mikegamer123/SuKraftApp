@@ -67,7 +67,6 @@ const SearchScreen = (props) => {
                 }).then(async r => {
                     if (r.status === 200) {
                         const res = await r.json();
-                        console.log("REZ", res.sellers)
                         setProducers(res.sellers);
                     }
                 })
@@ -101,7 +100,6 @@ const SearchScreen = (props) => {
                 }).then(async r => {
                     if (r.status === 200) {
                         const res = await r.json();
-                        console.log("REZ", res.sellers)
                         setProducers(res.sellers);
                     }
                 })

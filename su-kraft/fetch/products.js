@@ -11,3 +11,12 @@ export const getAllProducts = () => {
         }
     ).then(x => x);
 }
+
+export const getProductsBySellerId = (id) => {
+    return fetch(`${apiUrl}/products/getBySeller/${id}`, {
+            method: "GET",
+            mode: "cors",
+            headers: { "Content-Type": "application/json" },
+        }
+    ).then(x => x);
+}
