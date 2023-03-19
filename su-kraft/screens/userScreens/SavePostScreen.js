@@ -1,4 +1,4 @@
-import {Dimensions, Image, View} from "react-native";
+import {ActivityIndicator, Dimensions, Image, View} from "react-native";
 import ScreenBackground from "../../components/ScreenBackground";
 import {Video} from "expo-av";
 import {Button, Card, TextInput} from "react-native-paper";
@@ -32,7 +32,6 @@ const SavePostScreen = (props) => {
                         await uploadVideo(res.id, source).then(async r2 => {
                             if (r2.status === 201) {
                                 const res2 = await r2.json();
-                                console.log(res2);
                                 setLoading(false);
                                 navigation.navigate("Home");
                             } else {
@@ -41,7 +40,8 @@ const SavePostScreen = (props) => {
                         })
                     }
                 } else {
-                    console.log(r.status)
+                    console.log(r.status);
+                    setLoading(false);
                 }
             })
         } catch (e) {
@@ -50,15 +50,25 @@ const SavePostScreen = (props) => {
     }
 
     return (
-        <ScreenBackground>
+        <ScreenBackground image={require('../../assets/SuboticaLepo.jpg')}>
+            <View
+                style={{
+                    position: 'absolute',
+                    left: -100,
+                    top: -100,
+                    width: Dimensions.get("window").width * 2,
+                    height: Dimensions.get("window").height * 2,
+                    backgroundColor: "rgba(0,0,0,0.57)"
+                }}
+            />
             <KeyboardAwareScrollView style={{flex: 1}}>
                 <View style={{justifyContent: 'center', alignItems: 'center', marginTop: 40}}>
                     <Video
                         source={{uri: source}}
                         shouldPlay
-                        videoStyle={{width: Dimensions.get("window").width * 0.6, aspectRatio: 9 / 16}}
-                        style={{width: Dimensions.get("window").width * 0.6, aspectRatio: 9 / 16}}
-                        posterStyle={{width: Dimensions.get("window").width * 0.6, aspectRatio: 9 / 16}}
+                        videoStyle={{width: Dimensions.get("window").width * 0.6, aspectRatio: 9 / 16, borderRadius: 15, borderWidth: 2, borderColor: 'white'}}
+                        style={{width: Dimensions.get("window").width * 0.6, aspectRatio: 9 / 16, borderRadius: 15, borderWidth: 2, borderColor: 'white'}}
+                        posterStyle={{width: Dimensions.get("window").width * 0.6, aspectRatio: 9 / 16, borderRadius: 15, borderWidth: 2, borderColor: 'white'}}
                         useNativeControls
                     />
                 </View>
@@ -76,7 +86,7 @@ const SavePostScreen = (props) => {
                 </Card>
                 <Button mode='contained' style={{marginBottom: 10}} onPress={() => {
                     createPostHandler()
-                }}>Post</Button>
+                }}>{loading ? <ActivityIndicator /> : "Postavi"}</Button>
             </KeyboardAwareScrollView>
         </ScreenBackground>
     )

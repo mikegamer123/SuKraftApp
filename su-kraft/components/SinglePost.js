@@ -3,7 +3,11 @@ import {forwardRef, useEffect, useImperativeHandle, useRef} from "react";
 import {Dimensions, Image, TouchableWithoutFeedback, View} from "react-native";
 import AvatarImage from "react-native-paper/src/components/Avatar/AvatarImage";
 import {IconButton, Text} from "react-native-paper";
+import {getSellerById} from "../fetch/sellers";
+import {useNavigation} from "@react-navigation/native";
+import {environment} from "../enviroments/enviroment";
 
+const {serverUrl}= environment;
 const SinglePost = forwardRef((props, parentRef) => {
     const ref = useRef(null);
     useImperativeHandle(parentRef, () => ({
@@ -11,6 +15,7 @@ const SinglePost = forwardRef((props, parentRef) => {
         stop,
         unload
     }))
+    const navigation = useNavigation();
 
     useEffect(() => {
         load();
@@ -101,16 +106,16 @@ const SinglePost = forwardRef((props, parentRef) => {
                             </View>
                             <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
                                 <IconButton
-                                    icon="heart"
+                                    icon="arrow-right"
                                     size={22}
                                     mode="contained-tonal"
-                                    onPress={() => console.log('Pressed')}
-                                />
-                                <IconButton
-                                    icon="comment"
-                                    size={22}
-                                    mode="contained-tonal"
-                                    onPress={() => console.log('Pressed')}
+                                    onPress={async () => {
+                                        await getSellerById(props?.userId).then(async r => {
+                                            const res = await r.json();
+                                            console.log(res)
+                                            navigation.navigate("SellerScreen", {seller: {...res, pfp: serverUrl + "/" + res?.imageSeller?.srcUrl}})
+                                        })
+                                    }}
                                 />
                             </View>
                         </View>
@@ -156,16 +161,16 @@ const SinglePost = forwardRef((props, parentRef) => {
                         </View>
                         <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
                             <IconButton
-                                icon="heart"
+                                icon="arrow-right"
                                 size={22}
                                 mode="contained-tonal"
-                                onPress={() => console.log('Pressed')}
-                            />
-                            <IconButton
-                                icon="comment"
-                                size={22}
-                                mode="contained-tonal"
-                                onPress={() => console.log('Pressed')}
+                                onPress={async () => {
+                                    await getSellerById(props?.userId).then(async r => {
+                                        const res = await r.json();
+                                        console.log(res)
+                                        navigation.navigate("SellerScreen", {seller: {...res, pfp: serverUrl + "/" + res?.imageSeller?.srcUrl}})
+                                    })
+                                }}
                             />
                         </View>
                     </View>

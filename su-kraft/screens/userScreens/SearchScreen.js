@@ -20,8 +20,6 @@ const SearchScreen = (props) => {
     const [producers, setProducers] = useState([]);
     const {user} = useContext(UserContext);
 
-    console.log(user);
-
     const loadScreen = async () => {
         try {
             await getAllCategories().then(async r => {
@@ -221,7 +219,6 @@ const SearchScreen = (props) => {
                             numColumns={2}
                             estimatedItemSize={100}
                             renderItem={({item, index}) => {
-                                console.log(item)
                                 return(
                                     <SellerCard data={item}/>
                                 )

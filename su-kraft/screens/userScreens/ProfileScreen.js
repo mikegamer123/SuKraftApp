@@ -16,8 +16,6 @@ const ProfileScreen = () => {
         "lastName": user.lastName,
     });
 
-    console.log(user);
-
     const dataSetter = (field, value) => {
         setData(prevState => {
             return {...prevState, [field]: value};

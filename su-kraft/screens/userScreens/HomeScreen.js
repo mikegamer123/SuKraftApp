@@ -52,6 +52,7 @@ const HomeScreen = (props) => {
                     ref={(PostSingleRef) => (mediaRefs.current[item] = PostSingleRef)}
                     url={serverUrl + "/" + item?.imagePost?.srcUrl}
                     username={item?.user?.username}
+                    userId={item?.user?.id}
                     description={item?.post?.description}
                     image={item?.imagePost?.type === 'image'}
                 />

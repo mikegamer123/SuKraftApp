@@ -5,7 +5,6 @@ import {Text} from "react-native-paper";
 
 const SellerScreen = (props) => {
     const seller = props.route.params.seller;
-    console.log("SELLER", seller);
 
     return(
         <ScreenBackground image={require('../../assets/SuboticaLepo.jpg')}>
@@ -21,7 +20,10 @@ const SellerScreen = (props) => {
             />
             <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: 20}}>
                 <AvatarImage source={{uri: seller?.pfp}} size={100} />
-                <Text variant='headlineMedium' style={{color: 'white'}}>{seller.seller.name}</Text>
+                <View>
+                    <Text variant='headlineMedium' style={{color: 'white', maxWidth:Dimensions.get("window").width * 0.6, textAlign: 'right'}}>{seller.seller.name}</Text>
+                    <Text variant='headlineSmall' style={{color: 'white', maxWidth:Dimensions.get("window").width * 0.6, textAlign: 'right'}}>@{seller.user?.username}</Text>
+                </View>
             </View>
             <View style={{paddingVertical: 20}}>
                 <Text variant='headlineSmall' style={{color: 'white'}}>Moja priča</Text>

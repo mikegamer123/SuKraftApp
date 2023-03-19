@@ -40,7 +40,6 @@ const CartScreen = () => {
         }
         for await (let cartItem of cart) {
             const cartItemFull = allProducts?.find(x => cartItem?.itemId === x.id);
-            console.log("WW", cartItemFull);
             await createOrder({
                 ...basicOrderData,
                 sellerID: cartItemFull?.other?.seller?.id,
@@ -49,13 +48,6 @@ const CartScreen = () => {
                 counts: [cartItem.amount],
             }).then(async r => {
                 const res = await r.json();
-                console.log("REZ", res, {
-                    ...basicOrderData,
-                    sellerID: cartItemFull?.other?.seller?.id,
-                    description: cartItemFull?.description,
-                    products: [cartItemFull?.id],
-                    counts: [cartItem.amount],
-                })
             })
         }
         await changeCart([]);
@@ -92,7 +84,9 @@ const CartScreen = () => {
                                             justifyContent: 'center',
                                             alignItems: 'center',
                                             marginVertical: 10
-                                        }}>
+                                        }}
+                                        key={product?.name}
+                                        >
                                             <Text variant='bodyLarge'>{product?.name}</Text>
                                             <Card style={{width: '100%'}}>
                                                 <Card.Content>
