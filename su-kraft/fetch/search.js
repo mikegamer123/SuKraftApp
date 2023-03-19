@@ -14,6 +14,7 @@ export const searchProducts = (data) => {
 }
 
 export const searchProducers = (data) => {
+    console.log(`${apiUrl}/sellers/search?querySearch=${data.querySearch}&categoryID=${data.categoryID}`)
     return fetch(`${apiUrl}/sellers/search?querySearch=${data.querySearch}&categoryID=${data.categoryID}`, {
             method: "GET",
             mode: "cors",

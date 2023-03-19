@@ -1,7 +1,8 @@
 import ScreenBackground from "../../components/ScreenBackground";
 import {Dimensions, View} from "react-native";
 import AvatarImage from "react-native-paper/src/components/Avatar/AvatarImage";
-import {Text} from "react-native-paper";
+import {Button, Text} from "react-native-paper";
+import * as Linking from 'expo-linking';
 
 const SellerScreen = (props) => {
     const seller = props.route.params.seller;
@@ -28,6 +29,11 @@ const SellerScreen = (props) => {
             <View style={{paddingVertical: 20}}>
                 <Text variant='headlineSmall' style={{color: 'white'}}>Moja priča</Text>
                 <Text variant='titleMedium' style={{marginTop: 10, color: 'white'}}>{seller.seller.description}</Text>
+            </View>
+            <View style={{paddingVertical: 20}}>
+                <Text variant='headlineSmall' style={{color: 'white'}}>Kontakt</Text>
+                <Button onPress={() => {Linking.openURL('sms:' + seller.user?.phoneNo)}} mode='text'><Text variant='titleMedium' style={{marginTop: 10, color: 'white'}}>Broj telefona: {seller.user?.phoneNo}</Text></Button>
+                <Button onPress={() => {Linking.openURL('mailto:' + seller.user?.email)}} mode='text'><Text variant='titleMedium' style={{marginTop: 10, color: 'white'}}>E-mail adresa: {seller.user?.email}</Text></Button>
             </View>
         </ScreenBackground>
     )

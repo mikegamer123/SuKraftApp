@@ -67,7 +67,8 @@ const SearchScreen = (props) => {
                 }).then(async r => {
                     if (r.status === 200) {
                         const res = await r.json();
-                        setProducers(res);
+                        console.log("REZ", res.sellers)
+                        setProducers(res.sellers);
                     }
                 })
             } catch (e) {
@@ -76,6 +77,8 @@ const SearchScreen = (props) => {
         }
     }
     const searchHandlerWhenTab = async (tab) => {
+        console.log(tab)
+        console.log(tab)
         if (tab === 'products') {
             try {
                 await searchProducts({
@@ -98,7 +101,8 @@ const SearchScreen = (props) => {
                 }).then(async r => {
                     if (r.status === 200) {
                         const res = await r.json();
-                        setProducers(res);
+                        console.log("REZ", res.sellers)
+                        setProducers(res.sellers);
                     }
                 })
             } catch (e) {
@@ -120,7 +124,14 @@ const SearchScreen = (props) => {
                         backgroundColor: "rgba(0,0,0,0.57)"
                     }}
                 />
-                <View style={{width: '100%', marginTop: 0, marginBottom: 10, backgroundColor: 'rgba(255,255,255,0.65)', padding: 10, borderRadius: 20}}>
+                <View style={{
+                    width: '100%',
+                    marginTop: 0,
+                    marginBottom: 10,
+                    backgroundColor: 'rgba(255,255,255,0.65)',
+                    padding: 10,
+                    borderRadius: 20
+                }}>
                     <SegmentedButtons
                         value={selectedType}
                         onValueChange={(v) => {
@@ -157,7 +168,8 @@ const SearchScreen = (props) => {
                                             allCategories.map(item => {
                                                 if (item.type === 'product') {
                                                     return (
-                                                        <RadioButton.Item key={item?.name} label={item.name} value={item.id}/>
+                                                        <RadioButton.Item key={item?.name} label={item.name}
+                                                                          value={item.id}/>
                                                     )
                                                 }
                                             })
@@ -173,7 +185,8 @@ const SearchScreen = (props) => {
                                             allCategories.map(item => {
                                                 if (item.type === 'seller') {
                                                     return (
-                                                        <RadioButton.Item key={item?.name} label={item.name} value={item.id}/>
+                                                        <RadioButton.Item key={item?.name} label={item.name}
+                                                                          value={item.id}/>
                                                     )
                                                 }
                                             })
@@ -201,30 +214,22 @@ const SearchScreen = (props) => {
                 </Button>
                 <Button mode='contained' style={{marginTop: 10}} onPress={searchHandler}>Primeni</Button>
                 <Divider style={{marginVertical: 10}}/>
-                {
-                    selectedType === 'products' ?
-                        <FlashList
-                            data={products}
-                            numColumns={2}
-                            estimatedItemSize={100}
-                            renderItem={({item, index}) => {
-                                return(
-                                    <ProductCard data={item}/>
-                                )
-                            }}
-                        />
-                        :
-                        <FlashList
-                            data={producers}
-                            numColumns={2}
-                            estimatedItemSize={100}
-                            renderItem={({item, index}) => {
-                                return(
-                                    <SellerCard data={item}/>
-                                )
-                            }}
-                        />
-                }
+                <FlashList
+                    data={selectedType === 'products' ? products : producers}
+                    numColumns={2}
+                    estimatedItemSize={100}
+                    renderItem={({item, index}) => {
+                        if (selectedType === 'products') {
+                            return (
+                                <ProductCard data={item}/>
+                            )
+                        } else {
+                            return (
+                                <SellerCard data={item}/>
+                            )
+                        }
+                    }}
+                />
             </ScreenBackground>
         </Provider>
     )

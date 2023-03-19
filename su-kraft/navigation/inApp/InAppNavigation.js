@@ -52,8 +52,6 @@ const InAppNavigation = (props) => {
         })
     }
 
-    console.log(inCartAmount)
-
     return (
         <NavigationContainer linking={linking}>
             <Tab.Navigator
