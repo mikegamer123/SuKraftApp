@@ -9,7 +9,6 @@ const CartStack = () => {
         <Stack.Navigator
             initialRouteName="CartScreen"
             screenOptions={{
-                headerShown: false,
                 header: props => <CustomNavigationBar {...props} />
             }}
         >

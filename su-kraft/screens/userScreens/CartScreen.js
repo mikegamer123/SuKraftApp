@@ -3,7 +3,7 @@ import {useContext, useEffect, useState} from "react";
 import {CartContext} from "../../contexts/CartContext";
 import {getAllProducts} from "../../fetch/products";
 import {Avatar, Button, Card, Divider, IconButton, Text, TextInput} from "react-native-paper";
-import {Alert, ScrollView, View} from "react-native";
+import {Alert, Dimensions, ScrollView, View} from "react-native";
 import {UserContext} from "../../contexts/UserContext";
 import {createOrder} from "../../fetch/orders";
 import {useNavigation} from "@react-navigation/native";
@@ -64,7 +64,17 @@ const CartScreen = () => {
     }
 
     return (
-        <ScreenBackground>
+        <ScreenBackground image={require('../../assets/SuboticaLepo.jpg')}>
+            <View
+                style={{
+                    position: 'absolute',
+                    left: -100,
+                    top: -100,
+                    width: Dimensions.get("window").width * 2,
+                    height: Dimensions.get("window").height * 2,
+                    backgroundColor: "rgba(0,0,0,0.57)"
+                }}
+            />
             <ScrollView style={{flex: 1}}>
 
                 <Card style={{marginVertical: 20}}>

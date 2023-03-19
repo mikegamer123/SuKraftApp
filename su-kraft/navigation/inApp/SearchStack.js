@@ -2,6 +2,7 @@ import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import CustomNavigationBar from "../../components/CustomNavigationBar";
 import SearchScreen from "../../screens/userScreens/SearchScreen";
 import SingleProductScreen from "../../screens/userScreens/SingleProductScreen";
+import SellerScreen from "../../screens/userScreens/SellerScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -10,7 +11,6 @@ const SearchStack = () => {
         <Stack.Navigator
             initialRouteName="SearchScreen"
             screenOptions={{
-                headerShown: false,
                 header: props => <CustomNavigationBar {...props} />
             }}
         >
@@ -23,6 +23,11 @@ const SearchStack = () => {
                 name='SingleProductScreen'
                 component={SingleProductScreen}
                 options={{title: "Proizvod"}}
+            />
+            <Stack.Screen
+                name='SellerScreen'
+                component={SellerScreen}
+                options={{title: "Krafteri"}}
             />
         </Stack.Navigator>
     )

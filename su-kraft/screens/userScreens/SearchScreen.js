@@ -1,4 +1,4 @@
-import {View} from "react-native";
+import {Dimensions, View} from "react-native";
 import ScreenBackground from "../../components/ScreenBackground";
 import {useContext, useEffect, useState} from "react";
 import {Button, Dialog, Divider, Portal, Provider, RadioButton, Searchbar, SegmentedButtons} from "react-native-paper";
@@ -111,8 +111,18 @@ const SearchScreen = (props) => {
 
     return (
         <Provider>
-            <ScreenBackground>
-                <View style={{width: '100%', marginTop: 20, marginBottom: 10}}>
+            <ScreenBackground image={require('../../assets/SuboticaLepo.jpg')}>
+                <View
+                    style={{
+                        position: 'absolute',
+                        left: -100,
+                        top: -100,
+                        width: Dimensions.get("window").width * 2,
+                        height: Dimensions.get("window").height * 2,
+                        backgroundColor: "rgba(0,0,0,0.57)"
+                    }}
+                />
+                <View style={{width: '100%', marginTop: 0, marginBottom: 10, backgroundColor: 'rgba(255,255,255,0.65)', padding: 10, borderRadius: 20}}>
                     <SegmentedButtons
                         value={selectedType}
                         onValueChange={(v) => {
@@ -178,7 +188,7 @@ const SearchScreen = (props) => {
                         </Dialog.Actions>
                     </Dialog>
                 </Portal>
-                <Button mode='outlined' style={{marginTop: 10}} onPress={showDialog}>
+                <Button mode='contained-tonal' style={{marginTop: 10}} onPress={showDialog}>
                     {selectedType === 'products' ?
                         (selectedCategoryProduct !== undefined && selectedCategoryProduct !== '') ?
                             allCategories.find(x => x.id === selectedCategoryProduct).name

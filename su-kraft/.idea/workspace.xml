@@ -3,12 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="2ddb8fa5-f77c-47d3-bbac-197988d22336" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/SinglePost.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/SinglePost.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/navigation/inApp/InAppNavigation.js" beforeDir="false" afterPath="$PROJECT_DIR$/navigation/inApp/InAppNavigation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/navigation/inApp/InAppNotSellerNavigatio.js" beforeDir="false" afterPath="$PROJECT_DIR$/navigation/inApp/InAppNotSellerNavigatio.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/CustomNavigationBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/CustomNavigationBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/SellerCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/SellerCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/navigation/inApp/CartStack.js" beforeDir="false" afterPath="$PROJECT_DIR$/navigation/inApp/CartStack.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/navigation/inApp/ProfileStack.js" beforeDir="false" afterPath="$PROJECT_DIR$/navigation/inApp/ProfileStack.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/navigation/inApp/SearchStack.js" beforeDir="false" afterPath="$PROJECT_DIR$/navigation/inApp/SearchStack.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/userScreens/CartScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/userScreens/CartScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/userScreens/HomeScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/userScreens/HomeScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/userScreens/ProfileScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/userScreens/ProfileScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/userScreens/SearchScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/userScreens/SearchScreen.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
