@@ -2,26 +2,29 @@ import {Dimensions, Image, View} from "react-native";
 import ScreenBackground from "../../components/ScreenBackground";
 import {Video} from "expo-av";
 import {Button, Card, TextInput} from "react-native-paper";
-import {useState} from "react";
+import {useContext, useState} from "react";
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {createPost} from "../../fetch/posts";
 import {uploadVideo} from "../../fetch/media";
+import {UserContext} from "../../contexts/UserContext";
 
 const SavePostScreen = (props) => {
     const source = props.route.params.source;
+    const {user} = useContext(UserContext);
     const [description, setDescription] = useState("");
+
+    console.log(user)
 
     const createPostHandler = async () => {
         try {
             await createPost({
                 sellerID: 1,
-                description: "Hello world"
+                description: description
             }).then(async r => {
                 if (r.status === 201){
                     const res = await r.json();
                     if (res.id){
-                        // console.log(res.id);
-                        await uploadVideo(17, source).then(async r2 => {
+                        await uploadVideo(res.id, source).then(async r2 => {
                             if (r2.status === 201) {
                                 const res2 = await r2.json();
                                 console.log(res2);

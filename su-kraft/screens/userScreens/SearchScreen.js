@@ -1,12 +1,13 @@
 import {View} from "react-native";
 import ScreenBackground from "../../components/ScreenBackground";
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {Button, Dialog, Divider, Portal, Provider, RadioButton, Searchbar, SegmentedButtons} from "react-native-paper";
 import {getAllCategories} from "../../fetch/categories";
 import {searchProducers, searchProducts} from "../../fetch/search";
 import {FlashList} from "@shopify/flash-list";
 import ProductCard from "../../components/ProductCard";
 import SellerCard from "../../components/SellerCard";
+import {UserContext} from "../../contexts/UserContext";
 
 const SearchScreen = (props) => {
     const [selectedType, setSelectedType] = useState('products');
@@ -17,6 +18,9 @@ const SearchScreen = (props) => {
     const [allCategories, setAllCategories] = useState([]);
     const [products, setProducts] = useState([]);
     const [producers, setProducers] = useState([]);
+    const {user} = useContext(UserContext);
+
+    console.log(user);
 
     const loadScreen = async () => {
         try {
@@ -117,7 +121,7 @@ const SearchScreen = (props) => {
                         value={selectedType}
                         onValueChange={(v) => {
                             setSelectedType(v);
-                            searchHandler(v);
+                            searchHandlerWhenTab(v);
                         }}
                         buttons={[
                             {
@@ -198,6 +202,7 @@ const SearchScreen = (props) => {
                         <FlashList
                             data={products}
                             numColumns={2}
+                            estimatedItemSize={100}
                             renderItem={({item, index}) => {
                                 return(
                                     <ProductCard data={item}/>

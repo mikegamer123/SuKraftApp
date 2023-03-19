@@ -73,7 +73,7 @@ const CameraScreen = (props) => {
             quality: 1,
         })
 
-        if (!result.cancelled){
+        if (!result.canceled){
             navigation.navigate("SavePostScreen", {source: result.assets[0].uri});
         }
     }

@@ -17,10 +17,10 @@ export const getMedia = async (id) => {
     ).then(x => x);
 }
 
-export const uploadVideo = async (postId, image) => {
+export const uploadVideo = async (postId, video) => {
     const formData = new FormData();
     const videoData = {
-        uri: image, // file uri/path
+        uri: video, // file uri/path
         name: uuidv4(), //file name
         type: 'video/mp4', //file type
     }
@@ -32,25 +32,6 @@ export const uploadVideo = async (postId, image) => {
                 "Content-Type": "multipart/form-data",
             },
             body: formData
-        }
-    ).then(x => x);
-}
-export const createEventImage = async (pic, eventId) => {
-    const formData = new FormData();
-    const imageData = {
-        uri: pic.uri, // file uri/path
-        name: pic.fileName, //file name
-        type: 'image/jpeg', //file type
-    }
-    formData.append("image_upload", imageData);
-    return fetch(`${apiUrl}/image/event/${eventId}`, {
-            method: "POST",
-            mode: "cors",
-            headers: {
-                'Content-Type': 'multipart/form-data',
-                Authorization: `Bearer ${await getJWT()}`,
-            },
-            body: formData,
         }
     ).then(x => x);
 }

@@ -11,7 +11,7 @@ const RegistrationScreen = () => {
     const [data, setData] = useState({
         "firstName": "",
         "lastName": "",
-        "phoneNumber": "",
+        "phoneNo": "",
         "email": "",
         "password": "",
         "confirmPassword": "",
@@ -30,10 +30,13 @@ const RegistrationScreen = () => {
     const registerHandler = async () => {
         await registerUser(data).then(async r => {
             if (r.status < 500) {
-                // console.log("AAAAA", await r.text())
                 const res = await r.json();
+                console.log(r.status)
                 if (r.status === 200) {
-                    setSnackbarObj({visible: true, message: res.email?.toString()})
+                    setSnackbarObj({visible: true, message: "Uspesno ste se registrovali"})
+                    setTimeout(() => {
+                        navigation.navigate("LoginScreen");
+                    }, 500)
                 }
                 if (r.status === 400) {
                     setSnackbarObj({visible: true, message: res.email?.toString()})
@@ -58,7 +61,6 @@ const RegistrationScreen = () => {
             />
             <KeyboardAwareScrollView style={{flex: 1}}>
                 <View style={{flex: 1, justifyContent: 'space-between', paddingHorizontal: 10}}>
-
                     <Card>
                         <Card.Content>
                             <View style={{justifyContent: 'center', alignItems: 'center'}}>
@@ -98,8 +100,8 @@ const RegistrationScreen = () => {
                             />
                             <TextInput
                                 label="Broj telefona"
-                                value={data.phoneNumber}
-                                onChangeText={text => dataSetter("phoneNumber", text)}
+                                value={data.phoneNo}
+                                onChangeText={text => dataSetter("phoneNo", text)}
                                 keyboardType='phone-pad'
                                 mode='outlined'
                                 style={{marginBottom: 10}}

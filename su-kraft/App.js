@@ -102,6 +102,7 @@ export default function App() {
                 const userToken = await AsyncStorage.getItem("token");
                 const userId = await AsyncStorage.getItem("userId");
                 await getUserById(userId).then(async r => {
+                    console.log(r.status)
                     const res = await r.json();
                     setUser(res?.user);
                     dispatch({type: "SIGN_IN", token: userToken});
@@ -151,7 +152,7 @@ export default function App() {
         if (loading){
             return <View />
         }
-        if (!state.userToken){
+        if (state.userToken){
             return <InAppNavigation />
         }
         return <PreLoginNavigation />
