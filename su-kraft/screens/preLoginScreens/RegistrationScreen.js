@@ -31,7 +31,6 @@ const RegistrationScreen = () => {
         await registerUser(data).then(async r => {
             if (r.status < 500) {
                 const res = await r.json();
-                console.log(r.status)
                 if (r.status === 200) {
                     setSnackbarObj({visible: true, message: "Uspesno ste se registrovali"})
                     setTimeout(() => {

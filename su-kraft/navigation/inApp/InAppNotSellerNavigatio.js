@@ -7,7 +7,6 @@ import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import SearchStack from "./SearchStack";
 import CameraScreen from "../../screens/userScreens/CameraScreen";
 import CameraStack from "./CameraStack";
-import CartScreen from "../../screens/userScreens/CartScreen";
 import CartStack from "./CartStack";
 import {View} from "react-native";
 import {Badge} from "react-native-paper";
@@ -16,8 +15,9 @@ import {CartContext} from "../../contexts/CartContext";
 
 const Tab = createBottomTabNavigator();
 
-const InAppNavigation = (props) => {
+const InAppNotSellerNavigation = (props) => {
     const {cart} = useContext(CartContext);
+
     const linking = {
         prefixes: [
             "localhost:19000",
@@ -86,16 +86,6 @@ const InAppNavigation = (props) => {
                     }}
                 />
                 <Tab.Screen
-                    name='Camera'
-                    component={CameraStack}
-                    options={{
-                        tabBarLabel: 'Search',
-                        tabBarIcon: ({color}) => (
-                            <MaterialCommunityIcons name="camera" color={color} size={26}/>
-                        ),
-                    }}
-                />
-                <Tab.Screen
                     name='Profile'
                     component={ProfileStack}
                     options={{
@@ -115,7 +105,7 @@ const InAppNavigation = (props) => {
                                 <MaterialCommunityIcons name="cart" color={color} size={26}/>
                                 {
                                     inCartAmount &&
-                                    <Badge style={{position: 'absolute', right: -8, top: -8}}>{inCartAmount}</Badge>
+                                        <Badge style={{position: 'absolute', right: -8, top: -8}}>{inCartAmount}</Badge>
                                 }
                             </View>
                         ),
@@ -126,4 +116,4 @@ const InAppNavigation = (props) => {
     )
 }
 
-export default InAppNavigation;
+export default InAppNotSellerNavigation;

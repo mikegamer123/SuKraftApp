@@ -15,3 +15,12 @@ export const createPost = (data) => {
         }
     ).then(x => x);
 }
+
+export const getAllPosts = () => {
+    return fetch(`${apiUrl}/posts/get`, {
+            method: "GET",
+            mode: "cors",
+            headers: { "Content-Type": "application/json" },
+        }
+    ).then(x => x);
+}

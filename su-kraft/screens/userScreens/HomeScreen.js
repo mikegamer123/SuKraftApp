@@ -1,12 +1,13 @@
 import {useIsFocused, useNavigation} from "@react-navigation/native";
 import ScreenBackground from "../../components/ScreenBackground";
-import {useContext, useRef, useState} from "react";
+import {useContext, useEffect, useRef, useState} from "react";
 import {environment} from "../../enviroments/enviroment";
 import {AuthContext} from "../../App";
 import {UserContext} from "../../contexts/UserContext";
 import {FlashList} from "@shopify/flash-list";
 import {Dimensions, View} from "react-native";
 import SinglePost from "../../components/SinglePost";
+import {getAllPosts} from "../../fetch/posts";
 
 const {serverUrl} = environment;
 
@@ -29,14 +30,30 @@ const HomeScreen = (props) => {
                 }
             }
         });
-    })
+    });
+
+    const loadPosts = async () => {
+        await getAllPosts().then(async r => {
+            if (r.status === 200){
+                const res = await r.json();
+                setVideos(res);
+            }
+        })
+    }
+
+    useEffect(() => {
+        loadPosts();
+    }, [])
 
     const renderItem = ({item, index}) => {
         return (
-            <View style={{backgroundColor: "#000", height: Dimensions.get("window").height - 51}}>
+            <View key={item?.post?.id?.toString()} style={{backgroundColor: "#000", height: Dimensions.get("window").height - 49}}>
                 <SinglePost
                     ref={(PostSingleRef) => (mediaRefs.current[item] = PostSingleRef)}
-                    url="https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4"
+                    url={serverUrl + "/" + item?.imagePost?.srcUrl}
+                    username={item?.user?.username}
+                    desc={item?.post?.description}
+                    image={item?.imagePost?.type === 'image'}
                 />
             </View>
         )
@@ -54,9 +71,8 @@ const HomeScreen = (props) => {
                 viewablityConfig={{
                     itemVisiblePercentThreshold: 100
                 }}
-                keyExtractor={item => item}
                 renderItem={renderItem}
-                estimatedItemSize={Dimensions.get("window").height - 51}
+                estimatedItemSize={Dimensions.get("window").height - 49}
                 showsHorizontalScrollIndicator={false}
                 onViewableItemsChanged={onViewableItemsChanged.current}
             />

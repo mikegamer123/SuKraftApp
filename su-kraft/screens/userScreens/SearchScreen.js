@@ -56,7 +56,6 @@ const SearchScreen = (props) => {
                     if (r.status === 200) {
                         const res = await r.json();
                         setProducts(res.products);
-                        console.log("item s", res);
                     }
                 })
             } catch (e) {
@@ -71,7 +70,6 @@ const SearchScreen = (props) => {
                     if (r.status === 200) {
                         const res = await r.json();
                         setProducers(res);
-                        console.log("Person r", res);
                     }
                 })
             } catch (e) {
@@ -89,7 +87,6 @@ const SearchScreen = (props) => {
                     if (r.status === 200) {
                         const res = await r.json();
                         setProducts(res.products);
-                        console.log("item s", res);
                     }
                 })
             } catch (e) {
@@ -104,7 +101,6 @@ const SearchScreen = (props) => {
                     if (r.status === 200) {
                         const res = await r.json();
                         setProducers(res);
-                        console.log("Person r", res);
                     }
                 })
             } catch (e) {
@@ -153,7 +149,7 @@ const SearchScreen = (props) => {
                                             allCategories.map(item => {
                                                 if (item.type === 'product') {
                                                     return (
-                                                        <RadioButton.Item label={item.name} value={item.id}/>
+                                                        <RadioButton.Item key={item?.name} label={item.name} value={item.id}/>
                                                     )
                                                 }
                                             })
@@ -169,7 +165,7 @@ const SearchScreen = (props) => {
                                             allCategories.map(item => {
                                                 if (item.type === 'seller') {
                                                     return (
-                                                        <RadioButton.Item label={item.name} value={item.id}/>
+                                                        <RadioButton.Item key={item?.name} label={item.name} value={item.id}/>
                                                     )
                                                 }
                                             })

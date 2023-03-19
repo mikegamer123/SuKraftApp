@@ -30,6 +30,9 @@ const LoginScreen = () => {
             if (status === 200){
                 const res = await r.json();
                 if (res.access_token) {
+                    if (res.user.userRole === 'seller'){
+                        await AsyncStorage.setItem('sellerId', JSON.stringify(res?.user?.id));
+                    }
                     await AsyncStorage.setItem('user', JSON.stringify(res?.user));
                     await AsyncStorage.setItem('userId', JSON.stringify(res?.user?.id));
                     await AsyncStorage.setItem('token', res?.access_token);

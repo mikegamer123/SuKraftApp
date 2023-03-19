@@ -4,10 +4,16 @@
     <list default="true" id="2ddb8fa5-f77c-47d3-bbac-197988d22336" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fetch/media.js" beforeDir="false" afterPath="$PROJECT_DIR$/fetch/media.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fetch/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/fetch/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ProductCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/ProductCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/SinglePost.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/SinglePost.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fetch/posts.js" beforeDir="false" afterPath="$PROJECT_DIR$/fetch/posts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/navigation/inApp/InAppNavigation.js" beforeDir="false" afterPath="$PROJECT_DIR$/navigation/inApp/InAppNavigation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/navigation/inApp/SearchStack.js" beforeDir="false" afterPath="$PROJECT_DIR$/navigation/inApp/SearchStack.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/preLoginScreens/LoginScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/preLoginScreens/LoginScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/preLoginScreens/RegistrationScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/preLoginScreens/RegistrationScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/userScreens/CameraScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/userScreens/CameraScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/userScreens/HomeScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/userScreens/HomeScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/userScreens/ProfileScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/userScreens/ProfileScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/userScreens/SavePostScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/userScreens/SavePostScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/userScreens/SearchScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/userScreens/SearchScreen.js" afterDir="false" />
     </list>

@@ -1,11 +1,12 @@
 import {Video, Audio} from "expo-av";
 import {forwardRef, useEffect, useImperativeHandle, useRef} from "react";
-import {Dimensions, TouchableWithoutFeedback, View} from "react-native";
+import {Dimensions, Image, TouchableWithoutFeedback, View} from "react-native";
 import AvatarImage from "react-native-paper/src/components/Avatar/AvatarImage";
 import {IconButton, Text} from "react-native-paper";
 
 const SinglePost = forwardRef((props, parentRef) => {
     const ref = useRef(null);
+    console.log(props.url)
     useImperativeHandle(parentRef, () => ({
         play,
         stop,
@@ -79,10 +80,56 @@ const SinglePost = forwardRef((props, parentRef) => {
             return;
         }
         try {
-            await ref.current.loadAsync({uri: 'https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'});
+            await ref.current.loadAsync({uri: props.url});
         } catch (e) {
             console.error(e)
         }
+    }
+
+    if (props.image){
+        return (
+            <TouchableWithoutFeedback
+                onPress={async () => {
+
+                }}
+                style={{position: 'relative'}}
+            >
+                <View>
+                    <Image
+                        style={{height: Dimensions.get("window").height - 49}}
+                        resizeMode="cover"
+                        source={{
+                            uri: props.url
+                        }}
+                    />
+                    <View style={{position: 'absolute', padding: 20, width: Dimensions.get("window").width, height: 200, backgroundColor: 'rgba(0,0,0,0.25)', right: 0, bottom: 0}}>
+                        <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+                            <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+                                <AvatarImage size={40} source={require('../assets/People/Person1.png')} />
+                                <Text style={{marginLeft: 10, color: "#fff"}} variant='titleLarge'>@{props.username}</Text>
+                            </View>
+                            <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+                                <IconButton
+                                    icon="heart"
+                                    size={22}
+                                    mode="contained-tonal"
+                                    onPress={() => console.log('Pressed')}
+                                />
+                                <IconButton
+                                    icon="comment"
+                                    size={22}
+                                    mode="contained-tonal"
+                                    onPress={() => console.log('Pressed')}
+                                />
+                            </View>
+                        </View>
+                        <View>
+                            <Text numberOfLines={4} style={{color: '#fff'}} variant='bodyLarge'>{props.description}</Text>
+                        </View>
+                    </View>
+                </View>
+            </TouchableWithoutFeedback>
+        )
     }
 
     return (
@@ -101,20 +148,20 @@ const SinglePost = forwardRef((props, parentRef) => {
             <View>
                 <Video
                     ref={ref}
-                    videoStyle={{height: Dimensions.get("window").height - 51}}
-                    style={{height: Dimensions.get("window").height - 51}}
-                    posterStyle={{height: Dimensions.get("window").height - 51}}
+                    videoStyle={{height: Dimensions.get("window").height - 49}}
+                    style={{height: Dimensions.get("window").height - 49}}
+                    posterStyle={{height: Dimensions.get("window").height - 49}}
                     resizeMode="cover"
                     isLooping={true}
                     source={{
-                        uri: 'https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4',
+                        uri: props.url
                     }}
                 />
                 <View style={{position: 'absolute', padding: 20, width: Dimensions.get("window").width, height: 200, backgroundColor: 'rgba(0,0,0,0.25)', right: 0, bottom: 0}}>
                     <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
                         <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
                             <AvatarImage size={40} source={require('../assets/People/Person1.png')} />
-                            <Text style={{marginLeft: 10, color: "#fff"}} variant='titleLarge'>@username</Text>
+                            <Text style={{marginLeft: 10, color: "#fff"}} variant='titleLarge'>@{props.username}</Text>
                         </View>
                         <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
                             <IconButton
@@ -132,7 +179,7 @@ const SinglePost = forwardRef((props, parentRef) => {
                         </View>
                     </View>
                     <View>
-                        <Text numberOfLines={4} style={{color: '#fff'}} variant='bodyLarge'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium consectetur eligendi facilis id iure labore numquam saepe temporibus! Accusantium aliquam aliquid animi beatae debitis dignissimos doloribus ducimus ea eaque earum eveniet excepturi id iste iusto modi neque nihil nobis non nulla numquam odio perferendis perspiciatis porro, quaerat quam qui quia, sed similique sit soluta tempora tempore temporibus ut veritatis, vitae voluptate voluptatem? Consequuntur laudantium mollitia quia quo sed sint sit.</Text>
+                        <Text numberOfLines={4} style={{color: '#fff'}} variant='bodyLarge'>{props.description}</Text>
                     </View>
                 </View>
             </View>

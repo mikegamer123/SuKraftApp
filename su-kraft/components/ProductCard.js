@@ -5,11 +5,14 @@ import {Skeleton} from "native-base";
 import {searchProducers} from "../fetch/search";
 import {getMedia} from "../fetch/media";
 import {environment} from "../enviroments/enviroment";
+import {useNavigation} from "@react-navigation/native";
+import {getSellerById} from "../fetch/sellers";
 
 const {serverUrl}= environment;
 
 const ProductCard = ({data}) => {
     const [image, setImage] = useState();
+    const navigation = useNavigation();
 
     const loadImage = async () => {
         try {
@@ -35,7 +38,10 @@ const ProductCard = ({data}) => {
     }, []);
 
     const navigateHandler = async () => {
-
+        await getSellerById(data?.sellerID).then(async r => {
+            const res = await r.json();
+            navigation.navigate("SingleProductScreen", {product: {...data, image: image, seller: res}})
+        })
     }
 
     return(

@@ -18,6 +18,8 @@ const ProfileScreen = () => {
         "lastName": user.lastName,
     });
 
+    console.log(user);
+
     const dataSetter = (field, value) => {
         setData(prevState => {
             return {...prevState, [field]: value};
@@ -94,7 +96,7 @@ const ProfileScreen = () => {
                             />
                             <TextInput
                                 label="Broj telefona"
-                                value={user.phoneNumber}
+                                value={user.phoneNo}
                                 onChangeText={text => dataSetter("phoneNumber", text)}
                                 keyboardType='numeric-pad'
                                 disabled

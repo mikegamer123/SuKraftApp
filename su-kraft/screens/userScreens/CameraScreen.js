@@ -41,8 +41,6 @@ const CameraScreen = (props) => {
             try {
                 const options = {maxDuration: 60, quality: Camera.Constants.VideoQuality['480']}
 
-                console.log("Start")
-
                 const videoRecordPromise = cameraRef.recordAsync(options);
 
                 if (videoRecordPromise){
@@ -57,8 +55,6 @@ const CameraScreen = (props) => {
     }
 
     const stopVideo = async () => {
-
-        console.log("End");
 
         if (cameraRef){
             cameraRef.stopRecording();

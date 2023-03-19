@@ -7,18 +7,23 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {createPost} from "../../fetch/posts";
 import {uploadVideo} from "../../fetch/media";
 import {UserContext} from "../../contexts/UserContext";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import {useNavigation} from "@react-navigation/native";
 
 const SavePostScreen = (props) => {
     const source = props.route.params.source;
     const {user} = useContext(UserContext);
     const [description, setDescription] = useState("");
-
-    console.log(user)
+    const [loading, setLoading] = useState(false);
+    const navigation = useNavigation();
 
     const createPostHandler = async () => {
+        console.log("START");
+        setLoading(true);
         try {
+            const sellerId = await AsyncStorage.getItem("sellerId");
             await createPost({
-                sellerID: 1,
+                sellerID: sellerId,
                 description: description
             }).then(async r => {
                 if (r.status === 201){
@@ -28,9 +33,11 @@ const SavePostScreen = (props) => {
                             if (r2.status === 201) {
                                 const res2 = await r2.json();
                                 console.log(res2);
+                                setLoading(false);
+                                navigation.navigate("Home");
                             } else {
                                 console.log(r2.status);
-                            };
+                            }
                         })
                     }
                 } else {
